@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Team</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.js"></script>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
+
+<script th:src="@{/team.js}"></script>
+</head>
+<body ng-app="TeamProfile" ng-controller="TeamController">
+	<div class="container">
+		<header class="d-flex justify-content-center py-3">
+			<ul class="nav nav-pills">
+				<li class="nav-item"><a href="/players" class="nav-link ">Players</a></li>
+				<li class="nav-item"><a href="/teams" class="nav-link">Teams</a></li>
+			</ul>
+		</header>
+	</div>
+	<div class="container">
+		<div class="p-3 border bg-light">
+
+			<button ng-click="editTeam()" type="button"
+				class="btn btn-outline-success">Edit</button>
+			<button ng-click="deleteTeam()" type="button"
+				class="btn btn-outline-danger">Delete</button>
+		</div>
+		<div class="p-3 border bg-light">
+			<h1>{{ team.name }}</h1>
+
+			<div>Country: {{ team.country }}</div>
+			<div>Balance: {{ team.balance }} $</div>
+			<div>Transfer commission: {{ team.transactionCommission }} %</div>
+
+
+		</div>
+		<table class="table table-hover  table-bordered">
+
+			<!-- $scope.players -->
+			<tr ng-repeat="player in players">
+
+
+				<td><a ng-click="openPlayerPage(player)"> {{ player.name }}
+						{{ player.surname }} </a></td>
+				<td>{{ player.country }}</td>
+				<td>{{ player.playerStyle }}</td>
+
+				<td><button ng-click="trasnfer(player)" type="button"
+						class="btn btn-outline-success">Transfer</button></td>
+			</tr>
+		</table>
+
+	</div>
+
+</body>
+</html>

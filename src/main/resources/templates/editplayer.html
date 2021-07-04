@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Edit player</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.js"></script>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
+
+<script th:src="@{/editplayer.js}"></script>
+</head>
+<body ng-app="PlayerEdit" ng-controller="PlayerEditController">
+	<div class="container">
+		<header class="d-flex justify-content-center py-3">
+			<ul class="nav nav-pills">
+				<li class="nav-item"><a href="/players" class="nav-link ">Players</a></li>
+				<li class="nav-item"><a href="/teams" class="nav-link">Teams</a></li>
+			</ul>
+		</header>
+	</div>
+	<div class="container">
+		<div class="p-3 border bg-light">
+			<form ng-submit="editPlayer()">
+
+
+				<div class="input-group mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-small">Name</span>
+					<input pattern="[A-Za-z0-9]{1,20}" required="required"
+						ng-model="playerForm.name" type="text" class="form-control"
+						aria-label="Sizing example input"
+						aria-describedby="inputGroup-sizing-small">
+				</div>
+				<div class="input-group mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-small">Surname</span>
+					<input pattern="[A-Za-z0-9]{1,20}" required="required"
+						ng-model="playerForm.surname" type="text" class="form-control"
+						aria-label="Sizing example input"
+						aria-describedby="inputGroup-sizing-small">
+				</div>
+				<div class="input-group mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-small">Birthday</span>
+					<input required="required" ng-model="playerForm.birthday"
+						type="date" class="form-control" aria-label="Sizing example input"
+						aria-describedby="inputGroup-sizing-small">
+				</div>
+
+				<div class="input-group mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-small">Works
+						since</span> <input required="required"
+						ng-model="playerForm.startWorkFrom" type="date"
+						class="form-control" aria-label="Sizing example input"
+						aria-describedby="inputGroup-sizing-small">
+				</div>
+				<div class="input-group mb-3">
+					<label class="input-group-text" for="inputGroupSelect01">Country</label>
+					<select required
+						ng-options='country for country in countrys'
+						ng-model="playerForm.country" class="form-select"
+						id="inputGroupSelect01"></select>
+
+				</div>
+				<div class="input-group mb-3">
+					<label class="input-group-text" for="inputGroupSelect01">Player
+						style</label> <select required
+						ng-options='playerStyle for playerStyle in playerStyles'
+						ng-model="playerForm.playerStyle" class="form-select"
+						id="inputGroupSelect01"></select>
+
+				</div>
+
+				<input type="submit" value="Save" class="btn btn-outline-success" />
+			</form>
+		</div>
+	</div>
+	</div>
+</body>
+</html>
